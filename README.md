@@ -17,7 +17,7 @@ Those are the modules that I forked and I will maintain (as long as I can) them 
 * [Instant Soulbind](https://github.com/beng-mods/instant-soulbind)
 * [Command / Chat-Sanitizer / Swim-Fix](https://github.com/pinkipi/tera-proxy)
 * [Tera-Game-State](https://github.com/caali-hackerman/tera-game-state/)
-* [Kasea's Ping Remover](https://docs.google.com/document/d/1Kt5ZQaNNAjXoFZQISNOmKWuQT_8eXYi3KZ3_09c733A/edit?usp=sharing)
+* [Kasea's Ping Remover (not distributed by me)](https://docs.google.com/document/d/1Kt5ZQaNNAjXoFZQISNOmKWuQT_8eXYi3KZ3_09c733A/edit?usp=sharing)
 
 ### Installation instructions
 * Download and run the setup from the #proxy channel in the Discord server linked above. A manual installation is possible, but not recommended!
