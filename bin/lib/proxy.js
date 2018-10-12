@@ -1,4 +1,4 @@
-const DiscordURL = "https://discord.gg/dUNDDtw";
+const DiscordURL = "https://discord.gg/y75BafU";
 
 
 const {region: REGION, updatelog: UPDATE_LOG, dnsservers: DNS_SERVERS} = (() => {
@@ -10,23 +10,6 @@ const {region: REGION, updatelog: UPDATE_LOG, dnsservers: DNS_SERVERS} = (() => 
         process.exit(1);
     }
 })();
-
-console.log("---------------------------------------------------------------------")
-if (REGION === "TW") {
-  console.log("Discord因为某个不知名第三方的请求，封停了我的账号，删除了我的服务器。")
-  console.log("      如果想获得后续的帮助和技术支持，请加入我的discord服务器：")
-} else if (REGION == "NA") {
-  console.log("    EME has DMCA'd my discord server and my GitHub repositories.")
-  console.log("Proxy, xigncode-bypass, Shinra, and TCC will NOT work for NA anymore!")
-  console.log("      Feel free to join my Discord server for more information.")
-} else {
-  console.log("EME (NA Tera's publisher) has DMCA'd my discord server and my GitHub repositories.")
-  console.log("          Feel free to join my Discord server for future information!")
-}
-console.log("             >>> https://discord.gg/dUNDDtw <<<")
-console.log("---------------------------------------------------------------------")
-if (REGION == "NA")
-    process.exit(1);
 
 const REGIONS = require("./regions");
 const currentRegion = REGIONS[REGION];
@@ -44,6 +27,11 @@ if (!currentRegion) {
   // Region migration
   let migratedFile = null;
   switch(REGION) {
+    case "NA": {
+      if (currentRegion.customServers["4004"] || currentRegion.customServers["4009"] || currentRegion.customServers["4012"] || currentRegion.customServers["4024"] || currentRegion.customServers["4032"])
+        migratedFile = "res/servers-na.json";
+      break;
+    }
     case "EU": {
       if (currentRegion.customServers["30"] || currentRegion.customServers["31"] || currentRegion.customServers["32"] || currentRegion.customServers["33"] || currentRegion.customServers["34"] || currentRegion.customServers["35"])
         migratedFile = "res/servers-eu.json";
@@ -335,21 +323,6 @@ function startProxy() {
 
       proxy.listen(listenHostname, listenHandler);
       clearTimeout(slsTimeout);
-
-      console.log("---------------------------------------------------------------------")
-      if (REGION === "TW") {
-        console.log("Discord因为某个不知名第三方的请求，封停了我的账号，删除了我的服务器。")
-        console.log("      如果想获得后续的帮助和技术支持，请加入我的discord服务器：")
-      } else if (REGION == "NA") {
-        console.log("    EME has DMCA'd my discord server and my GitHub repositories.")
-        console.log("Proxy, xigncode-bypass, Shinra, and TCC will NOT work for NA anymore!")
-        console.log("      Feel free to join my Discord server for more information.")
-      } else {
-        console.log("EME (NA Tera's publisher) has DMCA'd my discord server and my GitHub repositories.")
-        console.log("          Feel free to join my Discord server for future information!")
-      }
-      console.log("             >>> https://discord.gg/dUNDDtw <<<")
-      console.log("---------------------------------------------------------------------")
     });
   } else {
     for (let i = 0, arr = Object.keys(customServers), len = arr.length; i < len; ++i) {

@@ -7,8 +7,8 @@ const crypto = require('crypto');
 const fs = require("fs");
 const path = require("path");
 
-const TeraProxyAutoUpdateServers = ["https://raw.githubusercontent.com/caali-hackerman/tera-proxy/master/", "http://teralogs.feedia.co/proxy/", "https://teralogs.lima-city.de/proxy/"];
-const DiscordURL = "https://discord.gg/dUNDDtw";
+const TeraProxyAutoUpdateServers = ["https://raw.githubusercontent.com/terastuff/tera-proxy/master/"];
+const DiscordURL = "https://discord.gg/y75BafU";
 
 function forcedirSync(dir) {
   const sep = path.sep;

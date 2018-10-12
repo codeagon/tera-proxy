@@ -3,8 +3,8 @@ const crypto = require('crypto');
 const fs = require("fs");
 const path = require("path");
 
-const TeraDataAutoUpdateServer = "https://raw.githubusercontent.com/caali-hackerman/tera-data/master/";
-const DiscordURL = "https://discord.gg/dUNDDtw";
+const TeraDataAutoUpdateServer = "https://raw.githubusercontent.com/terastuff/tera-data/master/";
+const DiscordURL = "https://discord.gg/y75BafU";
 
 function forcedirSync(dir) {
   const sep = path.sep;
@@ -67,7 +67,7 @@ async function autoUpdateModule(name, root, updateData, updatelog, updatelimit, 
       console.log("[update] Updating module " + name);
 
     // TODO FIXME: temporary fix until migration to new github is done!
-    const update_url_root = updateData["servers"][serverIndex].replace('/hackerman-caali/', '/caali-hackerman/');
+    const update_url_root = updateData["servers"][serverIndex];
     const manifest_url = update_url_root + 'manifest.json';
     if(updatelog)
       console.log("[update] - Retrieving update manifest (Server " + serverIndex + ")");

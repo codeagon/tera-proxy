@@ -1,85 +1,12 @@
-### NOTICE REGARDING ENMASSE ENTERTAINMENT (NA) TERA
-This software in this repository does not work in combination with the NA version of TERA hosted by EME (neither PC, nor PS4/XB1 servers). It contains no intellectual property belonging to them.
-
-### Fork of Meishuu's/Pinkie Pie's tera-proxy with built-in support for automatic updates
+### Fork of Caali/Meishuu's/Pinkie Pie's tera-proxy with built-in support for automatic updates
 * It will auto-update your opcode mappings, packet definitions, and compatible installed modules. You no longer need do manually update _anything_!
-* Feel free to visit my Discord server at https://discord.gg/dUNDDtw
+* Feel free to visit my Discord server at https://discord.gg/y75BafU
 
 ### Installation instructions
 * Download and run the setup from the #proxy channel in the Slack server linked above. A manual installation is possible, but not recommended!
 * The first auto-update after installing the proxy or new mods may take a few seconds. This is because all required files will be downloaded automatically.
 * The most popular modules are already pre-installed for your convenience - check out `bin/node_modules/`. If you don't want to use a particular mod, just delete the corresponding folder or prefix its folder name with an underscore (`_`).
 * Run `TeraProxy.bat` *as Administrator*, then start the game
-
-### Popular and fully compatible modules
-Almost all tera-proxy modules are compatible with my proxy. For an always up-to-date list, check out [my Discord server](https://discord.gg/dUNDDtw)!
-* [Skill Prediction (SaltyMonkey's fork, included with the proxy by default)](https://github.com/SaltyMonkey/skill-prediction)
-* [FPS Utils (included with the proxy by default)](https://github.com/codeagon/fps-utils)
-* [Arborean Apparel](https://github.com/codeagon/arborean-apparel)
-* [Astral Tera](https://github.com/codeagon/Astral-TERA)
-* [True Everful Nostrum (my fork)](https://github.com/caali-hackerman/true-everful-nostrum)
-* [Instant Soulbind](https://github.com/beng-mods/instant-soulbind)
-* [Instant Enchant (my fork)](https://github.com/caali-hackerman/instant-enchant)
-* [Socialize](https://github.com/Leyki/Socialize/)
-* [Settings Saver](https://github.com/Kaseaa/Tera-Settings-Saver)
-* [Command / Chat-Sanitizer / Swim-Fix (included with the proxy by default)](https://github.com/pinkipi/tera-proxy)
-* [CaaliLogger / CaaliStateTracker](https://github.com/caali-hackerman/data-logger)
-* [Ghillieglade Auto-Reset](https://github.com/Snugglez/GG-Reset)
-* [No Custom Loading Screens](https://github.com/caali-hackerman/no-custom-loadingscreens)
-* [Library](https://github.com/Kaseaa/library/)
-* [FPS-Booster 2000](https://github.com/Kaseaa/fps-booster-2000)
-* [Tuwanguide](https://github.com/Snugglez/Tuwanguide)
-* [Ping Compensation](https://github.com/Mister-Kay/ping-compensation)
-* [No More Noctenium Lag](https://github.com/Mister-Kay/no-more-noctenium-lag)
-* [RK-9 Guide](https://github.com/Shinoyx/rk9guide)
-* [Battle Notify (my fork)](https://github.com/caali-hackerman/battle-notify)
-* [Dress Up Your Friends](https://github.com/SerenTera/DressUpYourFriends)
-* [Monster Marker](https://github.com/SerenTera/monster-marker)
-* [No More Motes](https://github.com/Snugglez/No-More-Motes)
-* [Skill Resets (my fork)](https://github.com/caali-hackerman/skill-resets)
-* [Auto-Vanguard (Seraphinush's fork)](https://github.com/seraphinush-gaming/auto-vanguard)
-* [Harrowhold P4 firewall markers](https://github.com/soler91/HH-Firewall-Markers)
-* [Boss Ping Remover (Kourinn's fork)](https://github.com/Mister-Kay/boss-ping-remover)
-* [No More Crazy Capes](https://github.com/Mister-Kay/no-more-crazy-capes)
-* [Enrage Notifier (Seraphinush's fork)](https://github.com/seraphinush-gaming/msg-enrage)
-* [Hide Players (Seraphinush's fork)](https://github.com/seraphinush-gaming/hide-players)
-* [Auto-Loot (Seraphinush's fork)](https://github.com/seraphinush-gaming/auto-loot)
-* [Auto-Cutscene / Skip Cutscenes (Seraphinush's fork)](https://github.com/seraphinush-gaming/auto-cutscene)
-* [Auto-Camera (Seraphinush's fork)](https://github.com/seraphinush-gaming/auto-camera)
-* [No More Wasted Backstabs](https://github.com/Mister-Kay/no-more-wasted-backstabs)
-* [Unmount Fix](https://github.com/Mister-Kay/unmount-fix)
-* [Stop Dismount](https://github.com/SerenTera/stop-dismount)
-* [AFK Notify](https://github.com/SerenTera/afk-notify)
-* [TCC Stub](https://github.com/Foglio1024/tcc-stub)
-* [Box](https://github.com/ayylmar/box)
-* [Generic Box Opener / Item User](https://github.com/Owyn/generic-box-opener-item-user)
-* [Abnormality Blocker](https://github.com/ayylmar/abnormality-blocker)
-* [Improved LFG](https://github.com/ayylmar/improved-lfg)
-* [No More Death Animations](https://github.com/ayylmar/no-more-death-animations)
-* [Infinity Journal (JustPassingBy's fork)](https://github.com/ayylmar/infinity-journal)
-* [Antaroth's Abyss Guide](https://github.com/Owyn/aaguide)
-* [Tera-Guide](https://github.com/Kaseaa/tera-guide)
-* [Mongord](https://github.com/soler91/mongord)
-* [No Drunk Screen](https://github.com/codeagon/no-drunk-screen)
-* [Hide Dmg](https://github.com/soler91/hide-dmg)
-* [Anti Bodyblock](https://github.com/soler91/Anti-Bodyblock)
-* [Quickload (Haku's fork)](https://github.com/HakuryuuDom/quick-load/blob/master/README.md)
-* [Essentials](https://github.com/TeraProxy/Essentials)
-* [Cosplayer](https://github.com/TeraProxy/Cosplayer)
-* [Vanguardian](https://github.com/TeraProxy/Vanguardian)
-* [Inspector](https://github.com/TeraProxy/Inspector)
-* [AFKer](https://github.com/TeraProxy/AFKer)
-* [Teabagger](https://github.com/TeraProxy/Teabagger)
-* [Block List](https://github.com/seraphinush-gaming/block-list)
-* [Salt Remover](https://github.com/SaltyMonkey/Salt-remover)
-* [Achievements](https://github.com/Owyn/Achievements)
-* [Mount Prediction](https://github.com/Snugglez/mount-prediction)
-* [No More Wasted Grim Strikes](https://github.com/Owyn/no_more_wasted_grim-strikes)
-* [Rainbow](https://github.com/codeagon/rainbow)
-* [Demon's Wheel Guide (my fork)](https://github.com/caali-hackerman/dw-guide/blob/master/README.md)
-* Bern's scripts
-* Kasea's Ping Remover
-* ... and many more
 
 ### Developers: Adding auto-update compatibility to your module
 * You'll need to create two files in your root update directory (called UpdateRoot from now on): `module.json` and `manifest.json`.
