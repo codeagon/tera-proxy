@@ -12,7 +12,6 @@ You can edit `bin/lib/config.json` to disable auto update for modules or for pro
 Those are the modules that I forked and I will maintain (as long as I can) them by merging with the upstream while avoiding NA memes. Here is the list of the original modules:
 
 * [Skill Prediction](https://github.com/SaltyMonkey/skill-prediction)
-* [FPS Utils](https://github.com/codeagon/fps-utils)
 * [Instant Enchant](https://github.com/caali-hackerman/instant-enchant)
 * [Instant Soulbind](https://github.com/beng-mods/instant-soulbind)
 * [Command / Chat-Sanitizer / Swim-Fix](https://github.com/pinkipi/tera-proxy)
