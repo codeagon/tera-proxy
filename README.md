@@ -6,8 +6,19 @@
 
 * You can edit `bin/lib/config.json` to disable auto update for proxy or for modules individually. (enabled by default)
 
+### Compatible modules
+Those are the modules that I forked and I will maintain (as long as I can) them by merging with the upstream while avoiding NA memes. Here is the list of the original modules:
+
+* [Skill Prediction](https://github.com/SaltyMonkey/skill-prediction)
+* [FPS Utils](https://github.com/codeagon/fps-utils)
+* [Instant Enchant (my fork)](https://github.com/caali-hackerman/instant-enchant)
+* [Instant Soulbind](https://github.com/beng-mods/instant-soulbind)
+* [Command / Chat-Sanitizer / Swim-Fix](https://github.com/pinkipi/tera-proxy)
+* [Tera-Game-State](https://github.com/caali-hackerman/tera-game-state/)
+* [Kasea's Ping Remover](https://docs.google.com/document/d/1Kt5ZQaNNAjXoFZQISNOmKWuQT_8eXYi3KZ3_09c733A/edit?usp=sharing)
+
 ### Installation instructions
-* Download and run the setup from the #proxy channel in the Slack server linked above. A manual installation is possible, but not recommended!
+* Download and run the setup from the #proxy channel in the Discord server linked above. A manual installation is possible, but not recommended!
 * The first auto-update after installing the proxy or new mods may take a few seconds. This is because all required files will be downloaded automatically.
 * The most popular modules are already pre-installed for your convenience - check out `bin/node_modules/`. If you don't want to use a particular mod, just delete the corresponding folder or prefix its folder name with an underscore (`_`).
 * Run `TeraProxy.bat` *as Administrator*, then start the game
