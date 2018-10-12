@@ -1,4 +1,6 @@
-const { disableAutoUpdateSelf } = require("../config.json");
+const { disableAutoUpdateSelf, disableAutoUpdateModules } = require("../config.json");
+
+console.log(`[proxy] Auto-Update Proxy: ${disableAutoUpdateSelf ? '\x1b[31mOFF' : '\x1b[32mON'}\x1b[0m Auto-Update Modules: ${disableAutoUpdateModules ? '\x1b[31mOFF' : '\x1b[32mON'}\x1b[0m `);
 
 async function updateSelf() {
   delete require.cache[require.resolve('./update-self')];

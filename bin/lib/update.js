@@ -7,6 +7,21 @@ const { disableAutoUpdateModules } = require("../config.json");
 const TeraDataAutoUpdateServer = "https://raw.githubusercontent.com/terastuff/tera-data/master/";
 const DiscordURL = "https://discord.gg/y75BafU";
 
+function log(...args) {
+  if (disableAutoUpdateModules) return;
+  console.log(...args);
+}
+
+function warn(...args) {
+  if (disableAutoUpdateModules) return;
+  console.warn(...args);
+}
+
+function error(...args) {
+  if (disableAutoUpdateModules) return;
+  console.error(...args);
+}
+
 function forcedirSync(dir) {
   const sep = path.sep;
   const initDir = path.isAbsolute(dir) ? sep : '';
@@ -63,15 +78,15 @@ async function autoUpdateModule(name, root, updateData, updatelog, updatelimit, 
   try {
     // If only one file (module.json) exists, it's a fresh install
     if (walkdir(root, true, false).length === 1)
-      console.log("[update] Installing module " + name);
+      log("[update] Installing module " + name);
     else if (updatelog)
-      console.log("[update] Updating module " + name);
+      log("[update] Updating module " + name);
 
     // TODO FIXME: temporary fix until migration to new github is done!
     const update_url_root = updateData["servers"][serverIndex];
     const manifest_url = update_url_root + 'manifest.json';
     if(updatelog)
-      console.log("[update] - Retrieving update manifest (Server " + serverIndex + ")");
+      log("[update] - Retrieving update manifest (Server " + serverIndex + ")");
 
     const manifest = await request({url: manifest_url, qs: {"drmkey": updateData["drmKey"]}, json: true});
     if(typeof manifest !== 'object')
@@ -111,7 +126,7 @@ async function autoUpdateModule(name, root, updateData, updatelog, updatelimit, 
       if(needsUpdate) {
         const file_url = update_url_root + file;
         if(updatelog)
-          console.log("[update] - Download " + file);
+          log("[update] - Download " + file);
 
         let promise = autoUpdateFile(file, filepath, file_url, updateData["drmKey"], manifest["no_hash_verification"] ? null : expectedHash);
         promises.push(updatelimit ? (await promise) : promise);
@@ -123,7 +138,7 @@ async function autoUpdateModule(name, root, updateData, updatelog, updatelimit, 
       walkdir(root, true, false).forEach(filepath => {
         if(!manifest["files"][filepath] && filepath != 'module.json') {
           if(updatelog)
-            console.log("[update] - Delete " + filepath);
+            log("[update] - Delete " + filepath);
           fs.unlinkSync(path.join(root, filepath));
         }
       });
@@ -135,7 +150,7 @@ async function autoUpdateModule(name, root, updateData, updatelog, updatelimit, 
           fs.rmdirSync(path.join(root, folderpath));
 
           if(updatelog)
-            console.log("[update] - Delete " + folderpath);
+            log("[update] - Delete " + folderpath);
         } catch(_) { }
       });
     }
@@ -157,7 +172,7 @@ async function autoUpdateDefs(requiredDefs, updatelog, updatelimit) {
   let promises = [];
 
   if(updatelog)
-    console.log("[update] Updating defs");
+    log("[update] Updating defs");
 
   const defs = await request({url: TeraDataAutoUpdateServer + 'defs.json', json: true});
   for(let def in defs) {
@@ -165,7 +180,7 @@ async function autoUpdateDefs(requiredDefs, updatelog, updatelimit) {
     let expectedHash = defs[def].toUpperCase();
     if(!fs.existsSync(filepath) || hash(fs.readFileSync(filepath)) !== expectedHash) {
       if(updatelog)
-        console.log("[update] - " + def);
+        log("[update] - " + def);
 
       let promise = autoUpdateDef(def, filepath, expectedHash);
       promises.push(updatelimit ? (await promise) : promise);
@@ -183,7 +198,7 @@ async function autoUpdateMaps(updatelog, updatelimit) {
   let protocol_data = {}
 
   if(updatelog)
-    console.log("[update] Updating maps");
+    log("[update] Updating maps");
 
   const mappings = await request({url: TeraDataAutoUpdateServer + 'mappings.json', json: true});
   for(let region in mappings) {
@@ -206,7 +221,7 @@ async function autoUpdateMaps(updatelog, updatelimit) {
     let protocol_filename = path.join(__dirname, '..', '..', 'node_modules', 'tera-data', 'map_base', protocol_name);
     if(!fs.existsSync(protocol_filename) || hash(fs.readFileSync(protocol_filename)) !== mappingData["protocol_hash"].toUpperCase()) {
       if(updatelog)
-        console.log("[update] - " + protocol_name);
+        log("[update] - " + protocol_name);
 
       let promise = autoUpdateFile(protocol_name, protocol_filename, TeraDataAutoUpdateServer + "map_base/" + protocol_name);
       promises.push(updatelimit ? (await promise) : promise);
@@ -215,7 +230,7 @@ async function autoUpdateMaps(updatelog, updatelimit) {
     let sysmsg_filename = path.join(__dirname, '..', '..', 'node_modules', 'tera-data', 'map_base', sysmsg_name);
     if(!fs.existsSync(sysmsg_filename) || hash(fs.readFileSync(sysmsg_filename)) !== mappingData["sysmsg_hash"].toUpperCase()) {
       if(updatelog)
-        console.log("[update] - " + sysmsg_name);
+        log("[update] - " + sysmsg_name);
 
       let promise = autoUpdateFile(sysmsg_name, sysmsg_filename, TeraDataAutoUpdateServer + "map_base/" + sysmsg_name);
       promises.push(updatelimit ? (await promise) : promise);
@@ -226,7 +241,7 @@ async function autoUpdateMaps(updatelog, updatelimit) {
 }
 
 async function autoUpdate(moduleBase, modules, updatelog, updatelimit, region) {
-  console.log("[update] Auto-update started!");
+  log("[update] Auto-update started!");
   let requiredDefs = new Set(["C_CHECK_VERSION.1.def"]);
 
   let successModules = [];
@@ -244,7 +259,7 @@ async function autoUpdate(moduleBase, modules, updatelog, updatelimit, region) {
           try {
             updateData = JSON.parse(updateData);
             if(updateData["disableAutoUpdate"] || disableAutoUpdateModules) {
-              console.warn("[update] WARNING: Auto-update disabled for module %s!", module);
+              warn("[update] WARNING: Auto-update disabled for module %s!", module);
               successModules.push({
                 "name": module,
                 "options": updateData["options"] || {},
@@ -262,7 +277,7 @@ async function autoUpdate(moduleBase, modules, updatelog, updatelimit, region) {
                     if(result[0] === "module.json") {
                       moduleConfigChanged = true;
                       if(updatelog)
-                        console.log("[update] - Module configuration changed, restarting update!");
+                        log("[update] - Module configuration changed, restarting update!");
                     }
                   }
                 }
@@ -290,13 +305,13 @@ async function autoUpdate(moduleBase, modules, updatelog, updatelimit, region) {
                   });
                 }
               } catch(e) {
-                console.error("[update] ERROR: Unable to auto-update module %s:\n%s", module, e);
+                error("[update] ERROR: Unable to auto-update module %s:\n%s", module, e);
                 if(updateData["supportUrl"]) {
-                  console.error("[update] Please go to %s and follow the given instructions or ask for help.", updateData["supportUrl"]);
+                  error("[update] Please go to %s and follow the given instructions or ask for help.", updateData["supportUrl"]);
                   if(updateData["supportUrl"] !== DiscordURL)
-                    console.error("[update] Alternatively, join %s and ask in the #help channel.", DiscordURL);
+                    error("[update] Alternatively, join %s and ask in the #help channel.", DiscordURL);
                 } else {
-                  console.error("[update] Please contact the module author or join %s and ask in the #help channel.", DiscordURL);
+                  error("[update] Please contact the module author or join %s and ask in the #help channel.", DiscordURL);
                 }
 
                 failedModules.push({
@@ -306,7 +321,7 @@ async function autoUpdate(moduleBase, modules, updatelog, updatelimit, region) {
               }
             }
           } catch(e) {
-            console.error("[update] ERROR: Failed to parse auto-update configuration for module %s:\n%s", module, e);
+            error("[update] ERROR: Failed to parse auto-update configuration for module %s:\n%s", module, e);
             failedModules.push({
               "name": module,
               "options": {},
@@ -340,9 +355,9 @@ async function autoUpdate(moduleBase, modules, updatelog, updatelimit, region) {
   }
 
   if(failedFiles.length > 0)
-    console.error("[update] ERROR: Unable to update the following def/map files. Please join %s and report this error in the #help channel!\n - %s", DiscordURL, failedFiles.join('\n - '));
+    error("[update] ERROR: Unable to update the following def/map files. Please join %s and report this error in the #help channel!\n - %s", DiscordURL, failedFiles.join('\n - '));
 
-  console.log("[update] Auto-update complete!");
+  log("[update] Auto-update complete!");
   return {"tera-data": (failedFiles.length == 0), "protocol_data": mapResults[0], "updated": successModules, "legacy": legacyModules, "failed": failedModules};
 }
 
