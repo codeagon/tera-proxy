@@ -1,3 +1,5 @@
+const { disableAutoUpdateSelf } = require("../config.json");
+
 async function updateSelf() {
   delete require.cache[require.resolve('./update-self')];
   const autoUpdateSelf = require("./update-self");
@@ -12,9 +14,13 @@ async function updateSelf() {
   }
 }
 
-updateSelf().then((result) => {
-  if(result)
-    require("./proxy");
-  else
-    console.log("Failed to auto-update the proxy, terminating...");
-});
+if (!disableAutoUpdateSelf) {
+  updateSelf().then((result) => {
+    if(result)
+      require("./proxy");
+    else
+      console.log("Failed to auto-update the proxy, terminating...");
+  });
+} else {
+  require("./proxy");
+}

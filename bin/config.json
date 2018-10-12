@@ -1,3 +1,5 @@
 {
-	"region": "NA"
+	"region": "NA",
+	"disableAutoUpdateSelf": false,
+	"disableAutoUpdateModules": false
 }

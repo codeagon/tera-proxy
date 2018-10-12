@@ -2,6 +2,7 @@ const request = require('request-promise-native');
 const crypto = require('crypto');
 const fs = require("fs");
 const path = require("path");
+const { disableAutoUpdateModules } = require("../config.json");
 
 const TeraDataAutoUpdateServer = "https://raw.githubusercontent.com/terastuff/tera-data/master/";
 const DiscordURL = "https://discord.gg/y75BafU";
@@ -242,7 +243,7 @@ async function autoUpdate(moduleBase, modules, updatelog, updatelimit, region) {
           let updateData = fs.readFileSync(path.join(root, 'module.json'), 'utf8');
           try {
             updateData = JSON.parse(updateData);
-            if(updateData["disableAutoUpdate"]) {
+            if(updateData["disableAutoUpdate"] || disableAutoUpdateModules) {
               console.warn("[update] WARNING: Auto-update disabled for module %s!", module);
               successModules.push({
                 "name": module,
