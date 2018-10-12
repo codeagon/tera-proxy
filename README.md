@@ -13,7 +13,7 @@ Those are the modules that I forked and I will maintain (as long as I can) them 
 
 * [Skill Prediction](https://github.com/SaltyMonkey/skill-prediction)
 * [FPS Utils](https://github.com/codeagon/fps-utils)
-* [Instant Enchant (my fork)](https://github.com/caali-hackerman/instant-enchant)
+* [Instant Enchant](https://github.com/caali-hackerman/instant-enchant)
 * [Instant Soulbind](https://github.com/beng-mods/instant-soulbind)
 * [Command / Chat-Sanitizer / Swim-Fix](https://github.com/pinkipi/tera-proxy)
 * [Tera-Game-State](https://github.com/caali-hackerman/tera-game-state/)
