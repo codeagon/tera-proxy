@@ -4,7 +4,9 @@
 
 ### Disabling auto-update for modules and proxy
 
-* You can edit `bin/lib/config.json` to disable auto update for proxy or for modules individually. (enabled by default)
+Since people don't know me and might not trust me to send automatic updates, I've added this everyone can easily turn their auto updates off if they want. Keep in mind that some modules require auto update to function (Kasea's PR for example).
+
+You can edit `bin/lib/config.json` to disable auto update for modules or for proxy individually (enabled by default). If you use any other module that isn't forked by me, I can't guarantee that it's going to work on NA or even that you're safe from NA "memes" when they update.
 
 ### Compatible modules
 Those are the modules that I forked and I will maintain (as long as I can) them by merging with the upstream while avoiding NA memes. Here is the list of the original modules:
