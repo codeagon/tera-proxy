@@ -2,6 +2,10 @@
 * It will auto-update your opcode mappings, packet definitions, and compatible installed modules. You no longer need do manually update _anything_!
 * Feel free to visit my Discord server at https://discord.gg/y75BafU
 
+### Disabling auto-update for modules and proxy
+
+* You can edit `bin/lib/config.json` to disable auto update for proxy or for modules individually. (enabled by default)
+
 ### Installation instructions
 * Download and run the setup from the #proxy channel in the Slack server linked above. A manual installation is possible, but not recommended!
 * The first auto-update after installing the proxy or new mods may take a few seconds. This is because all required files will be downloaded automatically.
